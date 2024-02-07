@@ -29,6 +29,14 @@ export default {
 <template>
   <AppHeader @search-films="searchFilms" />
   <AppMain />
+  <main>
+    <ul v-for="(movie, i) in store" :key="movie.id">
+      <li>{{ movie.title }}</li>
+      <li>{{ movie.original_title }}</li>
+      <li>{{ movie.original_language }}</li>
+      <li>{{ movie.vote_average }}</li>
+    </ul>
+  </main>
 </template>
 
 <style lang="scss">

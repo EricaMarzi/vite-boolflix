@@ -10,7 +10,12 @@ export default {
 
 <template>
     <main>
-        <div v-for="(movie, i) in store" :key="movie.id">{{ movie.title }}</div>
+        <ul v-for="(movie, i) in store.movies" :key="movie.id">
+            <li>{{ movie.title }}</li>
+            <li>{{ movie.original_title }}</li>
+            <li>{{ movie.original_language }}</li>
+            <li>{{ movie.vote_average }}</li>
+        </ul>
     </main>
 </template>
 
