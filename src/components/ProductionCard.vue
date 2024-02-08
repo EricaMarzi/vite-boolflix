@@ -31,8 +31,9 @@ export default {
         },
         getVote() {
             let transformVote = Math.round((this.vote / 10) * 5)
-
-            return transformVote
+            const fullStar = '<i class="fa-solid fa-star"></i>'
+            const emptyStar = '<i class="fa-regular fa-star"></i>'
+            return `Voto: ${fullStar.repeat(transformVote)}${emptyStar.repeat(5 - transformVote)}`
 
         }
     }
@@ -47,7 +48,7 @@ export default {
             <img v-if="hasFlag" :src="flagUrl" :alt="lang">
             <span v-else>{{ lang }}</span>
         </li>
-        <li>{{ getVote }}</li>
+        <li v-html="getVote"></li>
         <li>
             <img :src="posterUrl" alt="">
         </li>
