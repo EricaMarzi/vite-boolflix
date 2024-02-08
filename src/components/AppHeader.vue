@@ -9,10 +9,11 @@ export default {
 </script>
 
 <template>
-    <header class="d-flex justify-content-between p-3">
-        <div class="text-white">
-            Logo
-        </div>
+    <header class="d-flex justify-content-between align-items-center p-3">
+        <a href="#">
+            <img class="logo" src="../assets/img/netflix-logo.svg.png" alt="Netflix">
+        </a>
+
         <div>
             <SearchForm @submit-search="$emit('search-films')" @term-change="$emit('term-change', $event)" />
         </div>
@@ -21,7 +22,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-header {
-    background-color: black;
+img.logo {
+    height: 30px;
 }
 </style>

@@ -17,4 +17,11 @@ export default {
     </form>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+button {
+    background-color: #b81d24;
+    border: #b81d24;
+    height: 30px;
+    font-weight: 500;
+}
+</style>

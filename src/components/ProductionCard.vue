@@ -26,7 +26,7 @@ export default {
             return url.href;
         },
         posterUrl() {
-            return `https://image.tmdb.org/t/p/w342${this.production.poster_path}`;
+            return `https://image.tmdb.org/t/p/w185${this.production.poster_path}`;
 
         },
         getVote() {
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <template>
-    <ul>
+    <!-- <ul>
         <li>{{ title }}</li>
         <li>{{ originalTitle }}</li>
         <li>
@@ -49,10 +49,10 @@ export default {
             <span v-else>{{ lang }}</span>
         </li>
         <li v-html="getVote"></li>
-        <li>
-            <img :src="posterUrl" alt="">
-        </li>
-    </ul>
+    </ul> -->
+    <figure>
+        <img :src="posterUrl" alt="">
+    </figure>
 </template>
 
 <style lang="scss" scoped></style>
