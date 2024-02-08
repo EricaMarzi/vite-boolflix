@@ -39,7 +39,7 @@ export default {
     }
 }
 </script>
-
+<!--185x260-->
 <template>
     <!-- <ul>
         <li>{{ title }}</li>
@@ -50,9 +50,23 @@ export default {
         </li>
         <li v-html="getVote"></li>
     </ul> -->
-    <figure>
-        <img :src="posterUrl" alt="">
-    </figure>
+    <div class="col">
+        <figure>
+            <img :src="posterUrl" :alt="title" v-if="production.poster_path">
+            <div class="no-img" v-else><i class="fa-solid fa-film fa-2xl"></i></div>
+        </figure>
+    </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.no-img {
+    height: 277px;
+    width: 185px;
+    background-color: gray;
+    color: rgb(99, 99, 99);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+</style>
