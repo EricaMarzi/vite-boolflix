@@ -21,7 +21,12 @@ export default {
         flagUrl() {
             const url = new URL(`../assets/img/${this.lang}.png`, import.meta.url);
             return url.href;
-        }
+        },
+        posterUrl() {
+            return `https://image.tmdb.org/t/p/w342${this.production.poster_path}`;
+
+        },
+
     }
 }
 </script>
@@ -35,6 +40,9 @@ export default {
             <span v-else>{{ lang }}</span>
         </li>
         <li>{{ production.vote_average }}</li>
+        <li>
+            <img :src="posterUrl" alt="">
+        </li>
     </ul>
 </template>
 
