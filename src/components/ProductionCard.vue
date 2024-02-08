@@ -14,6 +14,9 @@ export default {
         lang() {
             return this.production.original_language
         },
+        vote() {
+            return this.production.vote_average
+        },
         hasFlag() {
             const flags = ['en', 'it'];
             return flags.includes(this.lang)
@@ -26,7 +29,12 @@ export default {
             return `https://image.tmdb.org/t/p/w342${this.production.poster_path}`;
 
         },
+        getVote() {
+            let transformVote = Math.round((this.vote / 10) * 5)
 
+            return transformVote
+
+        }
     }
 }
 </script>
@@ -39,7 +47,7 @@ export default {
             <img v-if="hasFlag" :src="flagUrl" :alt="lang">
             <span v-else>{{ lang }}</span>
         </li>
-        <li>{{ production.vote_average }}</li>
+        <li>{{ getVote }}</li>
         <li>
             <img :src="posterUrl" alt="">
         </li>

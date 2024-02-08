@@ -47,7 +47,6 @@ export default {
 
       axios.get(`${baseUri}/${endpoint}`, apiConfig).then((res) => {
         store[collection] = res.data.results
-        console.log(res.data.results)
       })
     },
 
