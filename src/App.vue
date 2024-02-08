@@ -2,8 +2,10 @@
 import axios from 'axios';
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
-import { store } from './assets/data/store';
+import { store } from './assets/data/store.js';
+import { api } from './assets/data/index.js'
 const movieEndpoint = 'https://api.themoviedb.org/3/search/movie?api_key=58af0113a84f8b3226f413927cf278f8&language=it-IT';
+const tvEndpoint = 'https://api.themoviedb.org/3/search/tv?api_key=58af0113a84f8b3226f413927cf278f8&language=it-IT';
 export default {
   name: 'Boolflix',
   data: () => ({
@@ -14,11 +16,24 @@ export default {
   },
   methods: {
     searchFilms(searchText) {
-      const searchMovieEndpoint = `${movieEndpoint}&query=${searchText}`;
-      console.log(searchMovieEndpoint)
+      if (!searchText) {
+        store.movies = [];
+        store.series = [];
+        return;
+      }
 
-      axios.get(searchMovieEndpoint).then((res) => {
-        this.store = res.data.results
+      const { baseUri, language, apiKey } = api;
+
+      const apiConfig = {
+        params: {
+          query: searchText,
+          api_key: apiKey,
+          language
+        }
+      }
+
+      axios.get(`${baseUri}/search/movie`, apiConfig).then((res) => {
+        store.movies = res.data.results
         console.log(res.data.results)
       })
     }
@@ -29,14 +44,6 @@ export default {
 <template>
   <AppHeader @search-films="searchFilms" />
   <AppMain />
-  <main>
-    <ul v-for="(movie, i) in store" :key="movie.id">
-      <li>{{ movie.title }}</li>
-      <li>{{ movie.original_title }}</li>
-      <li>{{ movie.original_language }}</li>
-      <li>{{ movie.vote_average }}</li>
-    </ul>
-  </main>
 </template>
 
 <style lang="scss">
