@@ -4,14 +4,15 @@ export default {
     data: () => ({
         searchText: ''
     }),
-    emits: ['submit-search']
+    emits: ['submit-search', 'term-change']
 }
 </script>
 
 <template>
     <!--@submit.prevent-->
-    <form @submit.prevent="$emit('submit-search', searchText)">
-        <input type="text" placeholder="Cerca Film o Serie" v-model.trim="searchText">
+    <form @submit.prevent="$emit('submit-search')">
+        <input type="text" placeholder="Cerca Film o Serie" v-model.trim="searchText"
+            @keyup="$emit('term-change', searchText)">
         <button>Cerca</button>
     </form>
 </template>

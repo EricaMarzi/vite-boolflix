@@ -2,7 +2,7 @@
 import SearchForm from './SearchForm.vue';
 export default {
     name: 'AppHeader',
-    emits: ['search-films'],
+    emits: ['search-films', 'term-change'],
     components: { SearchForm },
 
 }
@@ -14,7 +14,7 @@ export default {
             Logo
         </div>
         <div>
-            <SearchForm @submit-search="$emit('search-films', $event)" />
+            <SearchForm @submit-search="$emit('search-films')" @term-change="$emit('term-change', $event)" />
         </div>
 
     </header>
