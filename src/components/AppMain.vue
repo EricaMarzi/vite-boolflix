@@ -1,10 +1,14 @@
 <script>
 import { store } from '../assets/data/store.js';
+import ProductionCard from './ProductionCard.vue';
 export default {
     name: 'AppMain',
     data: () => ({
         store
     }),
+    components: {
+        ProductionCard
+    }
 }
 console.log({ store })
 </script>
@@ -12,21 +16,23 @@ console.log({ store })
 <template>
     <main>
         <h2>Film</h2>
-        <ul v-for="movie in store.movies" :key="movie.id">
+        <ProductionCard v-for="movie in store.movies" :key="movie.id" :production="movie" />
+        <!-- <ul v-for="movie in store.movies" :key="movie.id">
             <li>{{ movie.title }}</li>
             <li>{{ movie.original_title }}</li>
             <li>{{ movie.original_language }}</li>
             <li>{{ movie.vote_average }}</li>
-        </ul>
+        </ul> -->
 
 
         <h2>Serie TV</h2>
-        <ul v-for="serie in store.series" :key="serie.id">
+        <ProductionCard v-for="serie in store.series" :key="serie.id" :production="serie" />
+        <!-- <ul v-for="serie in store.series" :key="serie.id">
             <li>{{ serie.name }}</li>
             <li>{{ serie.original_name }}</li>
             <li>{{ serie.original_language }}</li>
             <li>{{ serie.vote_average }}</li>
-        </ul>
+        </ul> -->
     </main>
 </template>
 
