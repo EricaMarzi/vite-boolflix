@@ -19,7 +19,9 @@ console.log({ store })
             <section>
                 <h2>Film</h2>
                 <div class="row row-cols-7">
+
                     <ProductionCard v-for="movie in store.movies" :key="movie.id" :production="movie" />
+
                 </div>
             </section>
 
@@ -27,10 +29,17 @@ console.log({ store })
             <section class="pt-5">
                 <h2>Serie TV</h2>
                 <div class="row row-cols-7">
+
                     <ProductionCard v-for="serie in store.series" :key="serie.id" :production="serie" />
+
                 </div>
             </section>
         </div>
     </main>
 </template>
 
+<style lang="scss" scoped>
+.row {
+    gap: 20px
+}
+</style>

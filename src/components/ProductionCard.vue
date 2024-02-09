@@ -39,29 +39,34 @@ export default {
     }
 }
 </script>
-<!--185x260-->
 <template>
-    <div class="col">
-        <figure>
-            <img :src="posterUrl" :alt="title" v-if="production.poster_path">
-            <div class="no-img" v-else><i class="fa-solid fa-film fa-2xl"></i></div>
+    <div class="poster-container">
 
-            <ul class="text-white">
-                <li>
-                    <h6>{{ title }}</h6>
-                </li>
-                <li>{{ originalTitle }}</li>
-                <li>
-                    <img class="lang" v-if="hasFlag" :src="flagUrl" :alt="lang">
-                    <span v-else>{{ lang }}</span>
-                </li>
-                <li v-html="getVote"></li>
-            </ul>
-        </figure>
+        <img class="poster" :src="posterUrl" :alt="title" v-if="production.poster_path">
+        <div class="no-img" v-else><i class="fa-solid fa-film fa-2xl"></i></div>
+
+        <!--Sostituisci la lista-->
+        <ul>
+            <li>
+                <h6>{{ title }}</h6>
+            </li>
+            <li>{{ originalTitle }}</li>
+            <li>
+                <img class="lang" v-if="hasFlag" :src="flagUrl" :alt="lang">
+                <span v-else>{{ lang }}</span>
+            </li>
+            <li v-html="getVote"></li>
+        </ul>
+
     </div>
 </template>
 
 <style lang="scss" scoped>
+.poster-container {
+    position: relative;
+    width: 185px;
+}
+
 .no-img {
     height: 277px;
     width: 185px;
@@ -73,13 +78,9 @@ export default {
     align-items: center;
 }
 
-figure {
-    position: relative;
-    width: 185px;
-}
 
-figure:hover img,
-figure:hover .no-img {
+.poster-container:hover .poster,
+.poster-container:hover .no-img {
     opacity: 0.3;
 }
 
@@ -95,10 +96,12 @@ img::before {
 }
 
 ul {
+    color: white;
+
     display: none;
     position: absolute;
     top: 50%;
-    left: 40%;
+    left: 45%;
     transform: translate(-50%, -50%);
 
     flex-direction: column;
@@ -106,7 +109,7 @@ ul {
     align-items: center;
 }
 
-figure:hover ul {
+.poster-container:hover ul {
     display: flex;
 }
 
