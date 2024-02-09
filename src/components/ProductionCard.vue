@@ -45,18 +45,17 @@ export default {
         <img class="poster" :src="posterUrl" :alt="title" v-if="production.poster_path">
         <div class="no-img" v-else><i class="fa-solid fa-film fa-2xl"></i></div>
 
-        <!--Sostituisci la lista-->
-        <ul>
-            <li>
-                <h6>{{ title }}</h6>
-            </li>
-            <li>{{ originalTitle }}</li>
-            <li>
+
+        <section class="product-info">
+            <h5>{{ title }}</h5>
+            <h6>{{ originalTitle }}</h6>
+            <div>
+                <span>Lingua: </span>
                 <img class="lang" v-if="hasFlag" :src="flagUrl" :alt="lang">
                 <span v-else>{{ lang }}</span>
-            </li>
-            <li v-html="getVote"></li>
-        </ul>
+            </div>
+            <div v-html="getVote"></div>
+        </section>
 
     </div>
 </template>
@@ -95,29 +94,29 @@ img::before {
     background-color: rgba($color: #000000, $alpha: 0.5);
 }
 
-ul {
+.product-info {
     color: white;
 
     display: none;
     position: absolute;
     top: 50%;
-    left: 45%;
+    left: 50%;
     transform: translate(-50%, -50%);
 
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+
+    width: 160px;
+    padding-left: 5px;
 }
 
-.poster-container:hover ul {
+.poster-container:hover .product-info {
     display: flex;
 }
 
-li {
-    width: 160px;
-}
 
-.lang {
+
+img.lang {
     height: 20px;
 }
 </style>
