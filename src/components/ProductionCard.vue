@@ -41,19 +41,22 @@ export default {
 </script>
 <!--185x260-->
 <template>
-    <!-- <ul>
-        <li>{{ title }}</li>
-        <li>{{ originalTitle }}</li>
-        <li>
-            <img v-if="hasFlag" :src="flagUrl" :alt="lang">
-            <span v-else>{{ lang }}</span>
-        </li>
-        <li v-html="getVote"></li>
-    </ul> -->
     <div class="col">
         <figure>
             <img :src="posterUrl" :alt="title" v-if="production.poster_path">
             <div class="no-img" v-else><i class="fa-solid fa-film fa-2xl"></i></div>
+
+            <ul class="text-white">
+                <li>
+                    <h6>{{ title }}</h6>
+                </li>
+                <li>{{ originalTitle }}</li>
+                <li>
+                    <img class="lang" v-if="hasFlag" :src="flagUrl" :alt="lang">
+                    <span v-else>{{ lang }}</span>
+                </li>
+                <li v-html="getVote"></li>
+            </ul>
         </figure>
     </div>
 </template>
@@ -68,5 +71,50 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+figure {
+    position: relative;
+    width: 185px;
+}
+
+figure:hover img,
+figure:hover .no-img {
+    opacity: 0.3;
+}
+
+
+img::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: rgba($color: #000000, $alpha: 0.5);
+}
+
+ul {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+figure:hover ul {
+    display: flex;
+}
+
+li {
+    width: 160px;
+}
+
+.lang {
+    height: 20px;
 }
 </style>

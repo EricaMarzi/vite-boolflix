@@ -34,12 +34,3 @@ console.log({ store })
     </main>
 </template>
 
-<style lang="scss" scoped>
-ul {
-    list-style-type: none;
-}
-
-h2 {
-    color: gray;
-}
-</style>
